@@ -14,7 +14,7 @@ public class OperatorPow extends Operator
 			if(LValue == 0 && RValue < 0)
 				return 0;
 			else
-				return (double) Math.pow(LValue, RValue);
+				return  Math.pow(LValue, RValue);
 		} else
 			return 0;
 	}

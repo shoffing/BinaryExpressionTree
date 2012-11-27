@@ -9,7 +9,7 @@ public class OperatorCos extends Operator
 		if(subTree.getLeft() != null)
 		{
 			double value = subTree.getLeft().getRoot().eval( vars, subTree.getLeft() );
-			return (double) Math.cos(value);
+			return  Math.cos(value);
 		} else
 			return 0;
 	}

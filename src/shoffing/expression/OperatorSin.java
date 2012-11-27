@@ -9,7 +9,7 @@ public class OperatorSin extends Operator
 		if(subTree.getLeft() != null)
 		{
 			double value = subTree.getLeft().getRoot().eval( vars, subTree.getLeft() );
-			return (double) Math.sin(value);
+			return  Math.sin(value);
 		} else
 			return 0;
 	}

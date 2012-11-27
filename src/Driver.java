@@ -5,19 +5,25 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
+		Expression exp;
 
-		Expression exp = new Expression(
-			1,
-			(int) (Math.random() * 10),
-			0, 10,
-			0
-		);
-    	exp.setChances(1, 1, 1, 1, 1, 0, 0, 0);
-		exp.addAllVars();
-		exp.expand(20);
-		System.out.println(("Unsimplified:\t" + exp).replace("V0", "X"));
-		exp.simplify();
-		System.out.println(("Simplified:\t" + exp).replace("V0", "X"));
+		for(int i = 0; i < 10; i++)
+		{
+			exp = new Expression(
+				1,
+				(int) (Math.random() * 10),
+				0, 10,
+				0
+			);
+	    	exp.setChances(1, 1, 1, 1, 1, 0, 0, 0);
+			exp.addAllVars();
+			exp.expand(10);
+			System.out.println(("Unsimplified:\t" + exp).replace("V0", "x"));
+			exp.simplify();
+			System.out.println(("Simplified:\t" + exp).replace("V0", "x"));
+
+			System.out.println();
+		}
 
 		//BinaryTree<ExpressionPart> bt, bt_c;
 		//Expression exp;

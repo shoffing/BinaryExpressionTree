@@ -23,7 +23,11 @@ public class Constant extends Operand
 	
 	public String toString()
 	{
-		return "" + value;
+		String result = "" + value;
+		if(result.endsWith(".0"))
+			result = result.replace(".0", "");
+
+		return result;
 	}
 	
 	public Type getType()
