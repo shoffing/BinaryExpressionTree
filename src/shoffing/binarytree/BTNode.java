@@ -90,11 +90,14 @@ public class BTNode<T>
 			
 			if(val.getLeft() != null)
 				left = new BTNode(val.getLeft());
+			else
+				left = null;
 			
 			if(val.getRight() != null)
 				right = new BTNode(val.getRight());
-		} else
-		{
+			else
+				right = null;
+		} else {
 			if((left != null && left.getElement() != null))
 			{
 				left.setTreeAt(index - 1, val);

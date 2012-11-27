@@ -177,7 +177,7 @@ public class Expression
 					do { // N / 0
 						rhsVal = MIN_VAL + Math.random() * (MAX_VAL - MIN_VAL);
 					} while(round2(rhsVal, decimalPlaces) == 0);
-					
+
 					break;
 				case OPERATOR_POW:
 					if(expression.getValueAt(randTreeIndex).getType() == ExpressionPart.Type.CONSTANT && ((Constant) expression.getValueAt(randTreeIndex)).getValue() == 0) // 0 ^ -N
@@ -265,11 +265,13 @@ public class Expression
 	
 	public void simplify()
 	{
+		System.out.println(expression);
+		
 		for(int i = 0; i < expression.size(); i++)
 		{
 			BinaryTree<ExpressionPart> ct = expression.getTreeAt(i);
 			
-			BinaryTree<ExpressionPart> prevExpression = new BinaryTree<ExpressionPart>(expression);
+			BinaryTree<ExpressionPart> prevExpression = new BinaryTree<ExpressionPart>(ct);
 
 			switch(ct.getRoot().getType())
 			{
@@ -406,8 +408,10 @@ public class Expression
 					break;
 			}
 
-			i = !prevExpression.equals(expression) ? 0 : i;
+			i = !prevExpression.equals(expression.getTreeAt(i)) ? 0 : i;
 		}
+
+		System.out.println(expression);
 	}
 	
 	//
@@ -467,5 +471,10 @@ public class Expression
 	public void setDecimalPlaces(int places)
 	{
 		decimalPlaces = places;
+	}
+
+	public int getTreeSize()
+	{
+		return expression.size();
 	}
 }
