@@ -265,11 +265,11 @@ public class Expression
 	
 	public void simplify()
 	{
-		System.out.println(expression);
-		
 		for(int i = 0; i < expression.size(); i++)
 		{
 			BinaryTree<ExpressionPart> ct = expression.getTreeAt(i);
+
+			//System.out.println(getInfixExpression(ct));
 			
 			BinaryTree<ExpressionPart> prevExpression = new BinaryTree<ExpressionPart>(ct);
 
@@ -364,7 +364,9 @@ public class Expression
 						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(1)));
 					} else if( ct.getLeft().getRoot().getType() == ExpressionPart.Type.CONSTANT && ct.getRight().getRoot().getType() == ExpressionPart.Type.CONSTANT ) {
 						// C / C, ROOT = ROOT.LEFT / ROOT.RIGHT
-						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(((Constant) ct.getLeft().getRoot()).getValue() / ((Constant) ct.getRight().getRoot()).getValue())));
+						double result = ((Constant) ct.getLeft().getRoot()).getValue() / ((Constant) ct.getRight().getRoot()).getValue();
+						if(!Double.isNaN(result))
+							expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(result)));
 					} else if( ct.getRight().getRoot().getType() == ExpressionPart.Type.CONSTANT && ((Constant) ct.getRight().getRoot()).getValue() == 1 ) {
 						// N / 1, ROOT = ROOT.LEFT
 						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(ct.getLeft()));
@@ -376,7 +378,9 @@ public class Expression
 				case OPERATOR_POW:
 					if( ct.getLeft().getRoot().getType() == ExpressionPart.Type.CONSTANT && ct.getRight().getRoot().getType() == ExpressionPart.Type.CONSTANT ) {
 						// C ^ C, ROOT = ROOT.LEFT ^ ROOT.RIGHT
-						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(Math.pow(((Constant) ct.getLeft().getRoot()).getValue(), ((Constant) ct.getRight().getRoot()).getValue()))));
+						double result = Math.pow(((Constant) ct.getLeft().getRoot()).getValue(), ((Constant) ct.getRight().getRoot()).getValue());
+						if(!Double.isNaN(result))
+							expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(result)));
 					} else if( ct.getRight().getRoot().getType() == ExpressionPart.Type.CONSTANT && ((Constant) ct.getRight().getRoot()).getValue() == 0 ) {
 						// N ^ 0, ROOT = 1
 						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(1)));
@@ -386,6 +390,9 @@ public class Expression
 					} else if( ct.getLeft().getRoot().getType() == ExpressionPart.Type.CONSTANT && ((Constant) ct.getLeft().getRoot()).getValue() == 1 ) {
 						// 1 ^ N, ROOT = 1
 						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(1)));
+					} else if( ct.getLeft().getRoot().getType() == ExpressionPart.Type.CONSTANT && ((Constant) ct.getLeft().getRoot()).getValue() == 0 ) {
+						// 0 ^ N, ROOT = 0
+						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(0)));
 					}
 					break;
 				case OPERATOR_SIN:
@@ -403,15 +410,15 @@ public class Expression
 				case OPERATOR_TAN:
 					if( ct.getLeft().getRoot().getType() == ExpressionPart.Type.CONSTANT ) {
 						// TAN(C), ROOT = TAN(ROOT.LEFT)
-						expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(Math.tan(((Constant) ct.getLeft().getRoot()).getValue()))));
+						double result = Math.tan(((Constant) ct.getLeft().getRoot()).getValue());
+						if(!Double.isNaN(result))
+							expression.setTreeAt(i, new BinaryTree<ExpressionPart>(new Constant(result)));
 					}
 					break;
 			}
 
 			i = !prevExpression.equals(expression.getTreeAt(i)) ? 0 : i;
 		}
-
-		System.out.println(expression);
 	}
 	
 	//

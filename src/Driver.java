@@ -7,7 +7,7 @@ public class Driver
 	{
 		Expression exp;
 
-		for(int i = 0; i < 1; i++)
+		for(int i = 0; i < 1000; i++)
 		{
 			exp = new Expression(
 				1,
@@ -15,12 +15,12 @@ public class Driver
 				0, 10,
 				0
 			);
-	    	exp.setChances(1, 1, 1, 1, 1, 1, 1, 1);
+	    	exp.setChances(0, 0, 0, 1, 1, 0, 0, 1);
 			exp.addAllVars();
-			exp.expand(10);
-			System.out.println(("Unsimplified [" + exp.getTreeSize() + "]:\t" + exp).replace("V0", "x"));
+			exp.expand(5);
+			System.out.println(("Unsimplified [" + exp.getTreeSize() + "]:\n\t" + exp).replace("V0", "x"));
 			exp.simplify();
-			System.out.println(("Simplified [" + exp.getTreeSize() + "]:\t" + exp).replace("V0", "x"));
+			System.out.println(("Simplified [" + exp.getTreeSize() + "]:\n\t" + exp).replace("V0", "x"));
 
 			System.out.println();
 		}
