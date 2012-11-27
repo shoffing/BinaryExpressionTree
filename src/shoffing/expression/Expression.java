@@ -416,7 +416,8 @@ public class Expression
 					}
 					break;
 			}
-
+			
+			// If the tree was changed, restart the for loop.
 			i = !prevExpression.equals(expression.getTreeAt(i)) ? 0 : i;
 		}
 	}

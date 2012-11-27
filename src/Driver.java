@@ -7,22 +7,25 @@ public class Driver
 	{
 		Expression exp;
 
-		for(int i = 0; i < 1000; i++)
+		for(int i = 0; i < 5; i++)
 		{
 			exp = new Expression(
 				1,
 				(int) (Math.random() * 10),
-				0, 10,
-				0
+				-10, 10,
+				2
 			);
-	    	exp.setChances(0, 0, 0, 1, 1, 0, 0, 1);
+	    	exp.setChances(1, 1, 1, 1, 1, 1, 1, 1);
 			exp.addAllVars();
-			exp.expand(5);
-			System.out.println(("Unsimplified [" + exp.getTreeSize() + "]:\n\t" + exp).replace("V0", "x"));
+			exp.expand(6);
 			exp.simplify();
-			System.out.println(("Simplified [" + exp.getTreeSize() + "]:\n\t" + exp).replace("V0", "x"));
+			System.out.println(("" + exp).replace("V0", "x"));
 
-			System.out.println();
+			/*System.out.println(("Unsimplified [" + exp.getTreeSize() + "]:\n\t" + exp).replace("V0", "x").replace("V1", "y"));
+			exp.simplify();
+			System.out.println(("Simplified [" + exp.getTreeSize() + "]:\n\t" + exp).replace("V0", "x").replace("V1", "y"));*/
+
+			//System.out.println();
 		}
 
 		//BinaryTree<ExpressionPart> bt, bt_c;
