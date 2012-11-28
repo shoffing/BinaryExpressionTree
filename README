@@ -1,6 +1,6 @@
 Code for working with Binary Expression Trees.
 
-Here's an example of a possible application that I made in processing, where I use 3 randomly generated expressions to dictate the hue, saturation, and brightness values of individual pixels (using x-pos, y-pos, and time as variables):
+Here's an example of a possible application that I made in Processing, where I use 3 randomly generated expressions to dictate the hue, saturation, and brightness values of individual pixels (using x-pos, y-pos, and time as variables):
 http://www.tcnj.edu/~hoffins1/ExpressionExample/
 
 
