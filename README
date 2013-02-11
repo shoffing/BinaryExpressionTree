@@ -1,11 +1,11 @@
 Code for working with Binary Expression Trees.
 
 Here's an example of a possible application that I made in Processing, where I use 3 randomly generated expressions to dictate the hue, saturation, and brightness values of individual pixels (using x-pos, y-pos, and time as variables):
-http://www.tcnj.edu/~hoffins1/ExpressionExample/
+http://shoffing.com/pages/projects/expressiongen/
 
 
 And here's my algorithm for generating a random expression, in nifty diagram form:
-http://www.tcnj.edu/~hoffins1/ExpressionGenerationAlgorithm.png
+http://shoffing.com/pages/projects/expressiongen/algorithm.png
 
 
 Some example expressions that were generated and then simplified (simplification is very much a WIP):
